@@ -1,0 +1,21 @@
+services:
+  node1:
+    build: .
+    ports:
+      - "2221:22"
+  node2:
+    build: .
+    ports:
+      - "2222:22"
+  node3:
+    build: .
+    ports:
+      - "2223:22"
+  node4:
+    build: .
+    ports:
+      - "2224:22"
+  node5:
+    build: .
+    ports:
+      - "2225:22"

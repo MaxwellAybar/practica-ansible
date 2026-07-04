@@ -1,0 +1,34 @@
+- name: Automatización de Servidores
+  hosts: servidores
+  become: yes
+  tasks:
+    - name: Actualizar paquetes APT
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Crear usuario itla
+      user:
+        name: itla
+        state: present
+        shell: /bin/bash
+
+    - name: Crear carpeta app
+      file:
+        path: /home/itla/app
+        state: directory
+        owner: itla
+        group: itla
+
+    - name: Crear archivo hola.txt
+      copy:
+        content: "Hola mundo"
+        dest: /home/itla/app/hola.txt
+        owner: itla
+
+    - name: Instalar cowsay y htop
+      apt:
+        name: 
+          - cowsay
+          - htop
+        state: present
